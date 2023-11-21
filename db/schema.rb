@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_21_080744) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_084612) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_080744) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "variant_ingredients", force: :cascade do |t|
+    t.integer "variant_id", null: false
+    t.integer "ingredient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_variant_ingredients_on_ingredient_id"
+    t.index ["variant_id"], name: "index_variant_ingredients_on_variant_id"
+  end
+
   create_table "variants", force: :cascade do |t|
     t.string "title"
     t.decimal "sale_price"
@@ -57,11 +66,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_080744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id", null: false
+    t.string "slug"
     t.index ["product_id"], name: "index_variants_on_product_id"
   end
 
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "line_items", "variants"
+  add_foreign_key "variant_ingredients", "ingredients"
+  add_foreign_key "variant_ingredients", "variants"
   add_foreign_key "variants", "products"
 end
