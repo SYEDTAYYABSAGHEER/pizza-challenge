@@ -1,0 +1,28 @@
+<h1>Welcome To the Order Placed View <h1>
+
+<% if @orders.present? %>
+
+  <% @orders.each do |order| %>
+  <div>
+     <div>Order Number: <%= order.order_number %></div>
+     <div>Order Total: <%= order.price %></div>
+     <div>Order Tax: <%= order.tax %></div>
+     <div>Order Delivery Charges: <%= order.delivery_charges %></div>
+  </div>
+  <% if order.line_items.present? %>
+      <div>
+         <% order.line_items.each do |line_item|%>
+            <div>
+               <h4> Pizza Name: <%= line_item.product.title %> </h4>
+               <p> Pizza flavour Name: <%= line_item.variant.title%> <span> Price: <%= line_item.price %> </span> </p>
+            </div>
+         <% end %>
+      </div>
+  <% else %>
+     <h6>Currently Order is in cart</h6>
+   <%end%>
+   <hr/>
+  <%end%>
+<%else%>
+   <h1>Currently no order placed  Run the OrderCreateService.create</h1>
+<%end%>
