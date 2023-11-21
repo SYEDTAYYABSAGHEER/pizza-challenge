@@ -9,6 +9,10 @@
      <div>Order Tax: <%= order.tax %></div>
      <div>Order Delivery Charges: <%= order.delivery_charges %></div>
   </div>
+  <div>
+      <h3> <strong> Discount Codes: </strong></h3>
+      <h3><strong> Promotion Codes: </strong> </h3>
+  </div>
   <% if order.line_items.present? %>
       <div>
          <% order.line_items.each do |line_item|%>
