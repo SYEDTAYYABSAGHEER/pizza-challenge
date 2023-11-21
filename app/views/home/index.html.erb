@@ -1,0 +1,13 @@
+<h1> Welcome to The Pizza Store </h1>
+<% if @products.present?  %>
+
+    <% @products.each do |product|%>
+         <h6>Pizza Name: <%= product.title %></h6>
+         <% if product.variants.present? %>
+         <p> Different flavour in the Pizza</p>
+          <% %>
+     <%end%>
+    <%debugger%>
+<%else%>
+   <h6> Currently there is no products into the database </h6>
+<%end%>

@@ -1,24 +1,22 @@
-# README
+# Steps to Run the Task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. rails db:create
 
-Things you may want to cover:
+2. rails db:migrate
 
-* Ruby version
+3. rails db:seed
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+# You need to run the Order Create Service create method inorder to create the order
 
-* Database initialization
+1. rails c
 
-* How to run the test suite
+2. CreateOrderService.create
 
-* Services (job queues, cache servers, search engines, etc.)
+# Final Step
+   
+   rails s to run the server
 
-* Deployment instructions
 
-* ...
+# Note: Many things can be added in the project like validations and other stuff i can use sti as well for coupon logic but it requires some extra time
