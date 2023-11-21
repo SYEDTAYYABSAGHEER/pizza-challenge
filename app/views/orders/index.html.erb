@@ -3,21 +3,25 @@
 <% if @orders.present? %>
 
   <% @orders.each do |order| %>
-  <div>
+  <div style="display:flex">
      <div>Order Number: <%= order.order_number %></div>
      <div>Order Total: <%= order.price %></div>
      <div>Order Tax: <%= order.tax %></div>
      <div>Order Delivery Charges: <%= order.delivery_charges %></div>
   </div>
   <div>
-      <h3> <strong> Discount Codes: </strong></h3>
-      <h3><strong> Promotion Codes: </strong> </h3>
+      <h3><strong> Discount Codes && Promotion Codes</strong></h3>
+      <p>Coupon Code<%= order.coupons.pluck(:number).join(",") %></p>
+      <p>Coupon Type:
+       <span><%= order.coupons.pluck(:type).join(",")%></span>
+       </p>
   </div>
   <% if order.line_items.present? %>
       <div>
+         <h5> Products in the Cart</h5>
          <% order.line_items.each do |line_item|%>
             <div>
-               <h4> Pizza Name: <%= line_item.product.title %> </h4>
+               <p> Pizza Name: <%= line_item.product.title %> </p>
                <p> Pizza flavour Name: <%= line_item.variant.title%> <span> Price: <%= line_item.price %> </span> </p>
             </div>
          <% end %>

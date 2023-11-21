@@ -1,5 +1,14 @@
 require 'faker'
 
+1.upto(10) do |i|
+    PromotionCoupon.create(title: "Promotion Coupon #{i}",price: rand(10..20),number: SecureRandom.hex(4)  )
+  end
+  
+  1.upto(10) do |i|
+     DiscountCoupon.create(title: "Discount Couon #{i}",price: rand(10..20), number: SecureRandom.hex(4) )
+  end
+
+
 1.upto(100) do |i|
    puts 'Add Ingredient to database'
    Ingredient.create(name: Faker::Food.ingredient, price: Faker::Commerce.price)
@@ -19,8 +28,3 @@ puts 'Creating the Dumpy product for the project'
   end
 end
 
-
-# puts "Creating the Dumpy Variant for the project"
-# 1.upto(20).each do |i|
-#     Variant.create(title: Faker::Food.allergen)
-# end

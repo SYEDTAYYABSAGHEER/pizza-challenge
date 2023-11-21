@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_21_084612) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_102215) do
+  create_table "coupons", force: :cascade do |t|
+    t.string "title"
+    t.string "type"
+    t.string "price"
+    t.integer "status"
+    t.string "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_coupons_on_order_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -70,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_084612) do
     t.index ["product_id"], name: "index_variants_on_product_id"
   end
 
+  add_foreign_key "coupons", "orders"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "line_items", "variants"
