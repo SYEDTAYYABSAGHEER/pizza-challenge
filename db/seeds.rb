@@ -11,7 +11,7 @@ puts 'Creating the Dumpy product for the project'
   product = Product.create(title: Faker::Food.allergen, gtin: SecureRandom.hex(10),description: Faker::Food.description )
   1.upto(2).each do |i|
     puts "Attaching the variant #{i} to the Product"
-    variant = Variant.create(title: Faker::Food.allergen,product_id: product.id)
+    variant = Variant.create(title: Faker::Food.allergen,product_id: product.id, sale_price: rand(200..500),cost_price: rand(100..150))
     1.upto(10) do |i|
       puts "Add Ingredient #{i} into the variant"
       VariantIngredient.create(variant_id: variant.id, ingredient_id: rand(1..100) )
